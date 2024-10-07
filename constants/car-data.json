@@ -1,0 +1,30 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "nm": "Product 1",
+            "desc": "This is a description of Product 1.",
+            "avatarUrl": "https://via.placeholder.com/150",
+            "imgUrl": "https://via.placeholder.com/150",
+            "usrNm": "Alfred Nico"
+
+          },
+          {
+            "id": 2,
+            "nm": "Product 2",
+            "desc": "This is a description of Product 2.",
+            "avatarUrl": "https://via.placeholder.com/150",
+            "imgUrl": "https://via.placeholder.com/150",
+            "usrNm": "Mamy Nante"
+
+          },
+          {
+            "id": 3,
+            "nm": "Product 3",
+            "desc": "This is a description of Product 3.",
+            "avatarUrl": "https://via.placeholder.com/150",
+            "imgUrl": "https://via.placeholder.com/150",
+            "usrNm": "Franck"
+          }
+    ]
+}
