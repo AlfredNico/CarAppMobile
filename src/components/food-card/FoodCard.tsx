@@ -1,9 +1,9 @@
-import { FC, useEffect, useState  } from 'react';
+import { FC, useEffect, useRef, useState  } from 'react';
 import { View, Text, Image, TouchableOpacity, TextInput  } from 'react-native';
-import styles from './CarCard.styles';
+import styles from './FoodCard.styles';
 // import Icon from "react-native-vector-icons/Icon";
 import {MaterialCommunityIcons, Ionicons, Fontisto } from "react-native-vector-icons";
-
+import { Video, ResizeMode, AVPlaybackStatus } from 'expo-av'; 
 
     
 interface Car {
@@ -25,7 +25,7 @@ type InfoType = {
 
 
 
-export const CarCard: FC<any> = ({dataSource}) => {
+export const FoodCard: FC<any> = ({dataSource}) => {
   const [isInputVisible, setIsInputVisible] = useState(false);
   const [comment, setComment] = useState('');
 
@@ -56,44 +56,15 @@ export const CarCard: FC<any> = ({dataSource}) => {
     // console.log('Commented...');
     setIsInputVisible((prev) => !prev);
 
-  };
+  }
+
 
   const handleShare = () => {
     console.log('Shared');
   };
 
 
-  // const endpoint = "https://api.unsplash.com/photos/random?client_id=tE7UOZI-TDa9p_z6KPlwNVO9y58FkbkO3NJ3ivX10qE&query=cars"
   const [info, setInfo] = useState<InfoType>(dataSource);
-  // const [isDataLoaded, setIsDataLoaded] = useState(false);
-
-  // useEffect(() => {
-  //   fetch(`${endpoint}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data) {
-  //         const { urls, user, id, description, likes, created_at } = data;
-  //         setInfo({
-  //           id,
-  //           description: description || '',
-  //           likes,
-  //           created_at,
-  //           urls: {
-  //             small: urls.small
-  //           },
-  //           user: {
-  //             profile_image: user.profile_image.medium,
-  //             name: user.name,
-  //             id: user.id,
-  //             username: user.username
-  //           }
-  //         })
-  //         setIsDataLoaded(true);
-  //       }
-  //     })
-  //     .catch((error) => console.error('Error fetching image:', error));
-  // }, []);
-
 
   // text max length
   const [isExpanded, setIsExpanded] = useState(false);
@@ -102,13 +73,15 @@ export const CarCard: FC<any> = ({dataSource}) => {
     setIsExpanded(!isExpanded);
   };
 
+  const videoRef = useRef<Video>(null);
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <View style={styles.profile}>
-          <Image source={{ uri: info?.user?.profile_image || 'https://via.placeholder.com/150' }} style={styles.avatar} />
+          <Image source={{ uri: info?.thumbnail_url || 'https://via.placeholder.com/150' }} style={styles.avatar} />
           <View style={{ marginLeft: 10, flex: 1 }}>
-            <Text style={styles.name}>{info?.user?.name || '...'}</Text>
+            <Text style={styles.name}>{info?.name || '...'}</Text>
             <Text>{info.created_at}</Text>
           </View>
           <MaterialCommunityIcons name="dots-vertical" size={24} color="#000" />
@@ -123,7 +96,44 @@ export const CarCard: FC<any> = ({dataSource}) => {
         </TouchableOpacity>
       </View>
 
-      <Image source={{ uri: info?.urls?.small || 'https://via.placeholder.com/150' }} style={styles.image} />
+      {/* <Image source={{ uri: info?.urls?.small || 'https://via.placeholder.com/150' }} style={styles.image} /> */}
+
+      
+
+      <View style={styles.videoContainer}>
+        <Video
+          ref={videoRef}
+          style={styles.video}
+          source={{ uri: info.original_video_url }} // Remote video URL
+          useNativeControls
+          resizeMode={ResizeMode.CONTAIN}
+          isLooping
+          onError={(e) => console.error('Error with video playback', e)} 
+          onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {}}
+        />
+      </View>
+
+      {/* <TouchableOpacity onPress={handlePlayPause} style={styles.videoContainer}>
+        <Video
+          ref={videoRef}
+          style={styles.video}
+          source={{ uri:  info.original_video_url }} // Video URL
+          useNativeControls={false} // Disable native controls to manage it manually
+          resizeMode={ResizeMode.CONTAIN}
+          isLooping
+          onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
+            if (!status.isLoaded) {
+              console.error('Error loading video');
+            }
+          }}
+        />
+        {!isPlaying && (
+          <View style={styles.playButton}>
+            <Text style={styles.playButtonText}>Play</Text>
+          </View>
+        )}
+      </TouchableOpacity> */}
+      {/* <Button title={isPlaying ? 'Pause' : 'Play'} onPress={handlePlayPause} /> */}
       
       <View style={styles.actions}>
         <TouchableOpacity onPress={handleLike} style={styles.actionButton}>
@@ -132,7 +142,7 @@ export const CarCard: FC<any> = ({dataSource}) => {
           size={24} 
           color={isLiked ? "red" : "black"} 
         />
-          <Text style={styles.actionText}>{info?.likes} likes</Text>
+          <Text style={styles.actionText}>{info?.user_ratings.count_positive} likes</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={handleComment} style={styles.actionButton}>
           <MaterialCommunityIcons name={!isInputVisible ? "comment-processing-outline":"comment-processing"} size={24} color="#000" />

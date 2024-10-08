@@ -7,7 +7,9 @@
       "@components/*": ["src/components/*"],
       "@screens/*": ["src/screens/*"],
       "@utils/*": ["src/utils/*"],
-      "@assets/*": ["src/assets/*"]
+      "@assets/*": ["src/assets/*"], 
+      "@interfaces/*": ["src/interfaces/*"],
+      "@services/*": ["src/services/*"],
     }
   },
   "exclude": ["node_modules", "babel.config.js", "metro.config.js"]

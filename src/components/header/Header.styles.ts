@@ -24,5 +24,22 @@ export const styles = StyleSheet.create({
       width: 45,
       height: 45,
       borderRadius: 50
-    }
+    },
+
+    badge: {
+      position: 'absolute',
+      top: -5,
+      right: -5,
+      backgroundColor: 'red',
+      width: 20,
+      height: 20,
+      borderRadius: 10,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    badgeText: {
+      color: '#fff',
+      fontSize: 12,
+      fontWeight: 'bold',
+    },
   });

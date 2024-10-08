@@ -25,7 +25,7 @@ type InfoType = {
 
 
 
-export const CarCard: FC<any> = ({dataSource}) => {
+export const CarCard: FC = () => {
   const [isInputVisible, setIsInputVisible] = useState(false);
   const [comment, setComment] = useState('');
 
@@ -46,7 +46,7 @@ export const CarCard: FC<any> = ({dataSource}) => {
   const handleLike = () => {
     // console.log('Liked');
     setLiked(!isLiked);
-    setInfo({
+    isDataLoaded && setInfo({
       ...info,
       likes: isLiked? info.likes - 1 : info.likes + 1,
     });
@@ -63,36 +63,36 @@ export const CarCard: FC<any> = ({dataSource}) => {
   };
 
 
-  // const endpoint = "https://api.unsplash.com/photos/random?client_id=tE7UOZI-TDa9p_z6KPlwNVO9y58FkbkO3NJ3ivX10qE&query=cars"
-  const [info, setInfo] = useState<InfoType>(dataSource);
-  // const [isDataLoaded, setIsDataLoaded] = useState(false);
+  const endpoint = "https://api.unsplash.com/photos/random?client_id=tE7UOZI-TDa9p_z6KPlwNVO9y58FkbkO3NJ3ivX10qE&query=cars"
+  const [info, setInfo] = useState<InfoType>({});
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
-  // useEffect(() => {
-  //   fetch(`${endpoint}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data) {
-  //         const { urls, user, id, description, likes, created_at } = data;
-  //         setInfo({
-  //           id,
-  //           description: description || '',
-  //           likes,
-  //           created_at,
-  //           urls: {
-  //             small: urls.small
-  //           },
-  //           user: {
-  //             profile_image: user.profile_image.medium,
-  //             name: user.name,
-  //             id: user.id,
-  //             username: user.username
-  //           }
-  //         })
-  //         setIsDataLoaded(true);
-  //       }
-  //     })
-  //     .catch((error) => console.error('Error fetching image:', error));
-  // }, []);
+  useEffect(() => {
+    fetch(`${endpoint}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          const { urls, user, id, description, likes, created_at } = data;
+          setInfo({
+            id,
+            description: description || '',
+            likes,
+            created_at,
+            urls: {
+              small: urls.small
+            },
+            user: {
+              profile_image: user.profile_image.medium,
+              name: user.name,
+              id: user.id,
+              username: user.username
+            }
+          })
+          setIsDataLoaded(true);
+        }
+      })
+      .catch((error) => console.error('Error fetching image:', error));
+  }, []);
 
 
   // text max length
