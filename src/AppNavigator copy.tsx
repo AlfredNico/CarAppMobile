@@ -9,12 +9,17 @@ import { Header } from "components/header/Header";
 
 
 const Stack = createNativeStackNavigator();
-// const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 
 export const AppNavigator: FC = () => {
     return <NavigationContainer>
-         <Stack.Navigator>
+         <Stack.Navigator screenOptions={({ route }) => ({
+          headerStyle: {
+            backgroundColor: route.name === 'Details' ? '#6200ee' : '#ffffff',
+          },
+          headerTintColor: route.name === 'Details' ? '#ffffff' : '#000000',
+        })}>
             <Stack.Screen
                 name="Home"
                 component={HomeScreen}

@@ -1,7 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import cars from "./constants/car-data.json"
-import { CarCard } from 'components/car/CarCard';
+// import { StatusBar } from 'expo-status-bar';
+// import { ScrollView, StyleSheet, Text, View } from 'react-native';
+// import cars from "./constants/car-data.json"
+// import { CarCard } from 'components/car/CarCard';
+import { AppNavigator } from 'AppNavigator';
 
 export default function App() {
   return (
@@ -9,11 +10,8 @@ export default function App() {
     //   <Text>Open up App.tsx to start working on your app!</Text>
     //   <StatusBar style="auto" />
     // </View>
-    <ScrollView>
-      {cars['data'].map(car => (
-        <CarCard car={car} key={car.id} />
-      ))}
-    </ScrollView>
+    <AppNavigator />
+   
   );
 }
 

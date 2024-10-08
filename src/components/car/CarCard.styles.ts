@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 10,
     marginBottom: 10,
+    backgroundColor: '#f2f2f200',
   },
   
   title: {
@@ -62,7 +63,33 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 20,
     fontWeight: 'bold',
-    marginLeft: 10,
+  },
+
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 10,
+    width: '100%'
+  },
+  input: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 10,
+    marginRight: 10,
+  },
+  sendButton: {
+    // backgroundColor: '#007AFF', // Change the color as needed
+    borderRadius: 50,
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  toggleText: {
+    color: 'blue',
+    marginTop: 5,
+    fontWeight: 'bold',
   },
 });
 
