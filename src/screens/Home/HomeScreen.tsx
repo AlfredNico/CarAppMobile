@@ -44,8 +44,9 @@ export const HomeScreen: FC<any> = () => {
       </ScrollView> */}
 
       <ScrollView onScroll={handleScroll} scrollEventThrottle={16}>
-        {Array.from({ length: 50 }, (_, i) => (
+        {Array.from({ length: 10 }, (_, i) => (
           <Text key={i} style={styles.content}>{`Item ${i + 1}`}</Text>
+          // <CarCard key={i} />
         ))}
       </ScrollView>
 
