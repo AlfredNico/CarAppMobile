@@ -20,11 +20,14 @@ _Clone the repository to your local machine_
     cd CarAppMobile
 ```
 
-1. **Install Dependencies**
+2. **Install Dependencies**
 
 _Install dependencies using npm_
+```
+    npm i
+```
 
-1. **Start the Development Server**
+3. **Start the Development Server**
 
 _To run the project, use Expo_
 ```
