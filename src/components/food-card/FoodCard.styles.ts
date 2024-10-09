@@ -102,13 +102,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
   },
   video: {
-    // width: '100%',
-    // height: 200,
-    // borderRadius: 10,
-    // marginBottom: 10,
-    width: 300,  // La vidéo prendra toute la largeur du conteneur
-    height: undefined,
-    aspectRatio: 16 / 9,
+    width: '100%',
+    height: 200,
+    borderRadius: 10,
+    marginBottom: 10,
+    position: 'relative'
   },
   playButton: {
     position: 'absolute',

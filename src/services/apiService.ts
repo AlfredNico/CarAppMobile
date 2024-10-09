@@ -6,8 +6,8 @@ export const apiService = {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            // 'x-rapidapi-key': '21f4233c8emsh95db32faaff5112p158945jsnf78236e26469',
-            // 'x-rapidapi-host':  'tasty.p.rapidapi.com'
+            'x-rapidapi-key': '21f4233c8emsh95db32faaff5112p158945jsnf78236e26469',
+            'x-rapidapi-host':  'tasty.p.rapidapi.com'
           },
         });
   

@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef, useState } from "react"
-import { Button, Dimensions, ScrollView, Text, TouchableOpacity, View } from "react-native"
+import { ActivityIndicator, Button, Dimensions, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { styles } from "./HomeScreen.styles"
 import { CarCard } from "components/car/CarCard";
 import cars from "./../../../constants/car-data.json";
@@ -44,6 +44,7 @@ export const HomeScreen: FC<any> = () => {
   const scrollViewRef = useRef<ScrollView>(null);
 
   const [data, setData] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   // const [loading, setLoading] = useState<boolean>(false);
   // const [error, setError] = useState<string | null>(null);
 
@@ -59,28 +60,36 @@ export const HomeScreen: FC<any> = () => {
     if (scrollViewRef.current) {
       scrollViewRef.current.scrollTo({ y: 0, animated: true });
 
-      Array.from({length: 5}, async(_, index) => {
-        const d = await fetchData();
-        setData((prevData) => [d, ...prevData]);
-      });
+
+      console.log('Start');
+      const fetchDataAsync = async () => {
+        Array.from({length: 5}, async(_, index) => {
+          const newData = await fetchData();
+          setData((prevData) => [...prevData, newData]);
+        });
+      }
+      fetchDataAsync();
+      setIsLoading(true);
     }
   };
 
   useEffect(() => {
+    console.log('Start');
     const fetchDataAsync = async () => {
-      Array.from({length: 5}, async(_, index) => {
-        const newData = await fetchData();
-        setData((prevData) => [...prevData, newData]);
-      });
-      // const response = await fetchData();
-      // const newData = response.map(data => {
-      //   const { description, name, original_video_url, thumbnail_url, price, keywords, user_ratings, id, created_at, updated_at } = data;
-      //   return { description, name, original_video_url, thumbnail_url, price, keywords, user_ratings, id, created_at, updated_at };
+      // Array.from({length: 5}, async(_, index) => {
+      //   const newData = await fetchData();
+      //   setData((prevData) => [...prevData, newData]);
       // });
-      // setData(newData);
+
+      await Promise.all(
+        Array.from({ length: 5 }, async (_, index) => {
+          const newData = await fetchData();
+          setData((prevData) => [...prevData, newData]);
+        })
+      );
+      setIsLoading(true);
     }
     fetchDataAsync();
-    console.log('Fetching data');
     
   }, []);
 
@@ -93,10 +102,14 @@ export const HomeScreen: FC<any> = () => {
         ))} */}
 
         {
-          data.map((item, i:number) => 
+          isLoading 
+          ? data.map((item, i:number) => 
             <CarCard dataSource={item} key={i} />
             // <FoodCard dataSource={item} key={i} />
-          )
+          ) : <View style={styles.loadingContainer}>
+          <ActivityIndicator size="small" color="#fff" />
+          <Text style={styles.loadingText}>Loading data...</Text>
+        </View>
         }
         
       </ScrollView>

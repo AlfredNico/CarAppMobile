@@ -2,7 +2,7 @@ import { FC, useEffect, useRef, useState  } from 'react';
 import { View, Text, Image, TouchableOpacity, TextInput  } from 'react-native';
 import styles from './FoodCard.styles';
 // import Icon from "react-native-vector-icons/Icon";
-import {MaterialCommunityIcons, Ionicons, Fontisto } from "react-native-vector-icons";
+import {MaterialCommunityIcons, Ionicons, Fontisto, AntDesign } from "react-native-vector-icons";
 import { Video, ResizeMode, AVPlaybackStatus } from 'expo-av'; 
 
     
@@ -42,13 +42,26 @@ export const FoodCard: FC<any> = ({dataSource}) => {
 
   // like option
   const [isLiked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
+  const [isDislike, setDislike] = useState(false);
   const handleLike = () => {
-    // console.log('Liked');
     setLiked(!isLiked);
     setInfo({
       ...info,
-      likes: isLiked? info.likes - 1 : info.likes + 1,
+      user_ratings: {
+        ...info.user_ratings,
+        count_positive: isLiked? info.user_ratings.count_positive - 1 : info.user_ratings.count_positive + 1
+      }
+    });
+  };
+
+  const handleDislike = () => {
+    setDislike(!isDislike);
+    setInfo({
+      ...info,
+      user_ratings: {
+        ...info.user_ratings,
+        count_negative: isDislike? info.user_ratings.count_negative - 1 : info.user_ratings.count_negative + 1
+      }
     });
   };
 
@@ -84,7 +97,8 @@ export const FoodCard: FC<any> = ({dataSource}) => {
             <Text style={styles.name}>{info?.name || '...'}</Text>
             <Text>{info.created_at}</Text>
           </View>
-          <MaterialCommunityIcons name="dots-vertical" size={24} color="#000" />
+          {/* <MaterialCommunityIcons name="dots-vertical" size={24} color="#000" /> */}
+          <Text style={{ color: '#5cc9cdd9', fontSize: 20, fontWeight: 'bold' }}>Price: ${ info.price.total } </Text>
         </View>
 
         <Text style={styles.description}>{isExpanded ? info?.description : `${info?.description?.substring(0, maxChars)}...`}</Text>
@@ -110,39 +124,26 @@ export const FoodCard: FC<any> = ({dataSource}) => {
           isLooping
           onError={(e) => console.error('Error with video playback', e)} 
           onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {}}
+          videoStyle={{width: '100%', height: 200}}
         />
       </View>
-
-      {/* <TouchableOpacity onPress={handlePlayPause} style={styles.videoContainer}>
-        <Video
-          ref={videoRef}
-          style={styles.video}
-          source={{ uri:  info.original_video_url }} // Video URL
-          useNativeControls={false} // Disable native controls to manage it manually
-          resizeMode={ResizeMode.CONTAIN}
-          isLooping
-          onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
-            if (!status.isLoaded) {
-              console.error('Error loading video');
-            }
-          }}
-        />
-        {!isPlaying && (
-          <View style={styles.playButton}>
-            <Text style={styles.playButtonText}>Play</Text>
-          </View>
-        )}
-      </TouchableOpacity> */}
-      {/* <Button title={isPlaying ? 'Pause' : 'Play'} onPress={handlePlayPause} /> */}
       
       <View style={styles.actions}>
         <TouchableOpacity onPress={handleLike} style={styles.actionButton}>
-          <Ionicons 
-          name={isLiked ? "heart" : "heart-outline"} 
-          size={24} 
-          color={isLiked ? "red" : "black"} 
-        />
+          <AntDesign 
+            name={isLiked ? "like1" : "like2"} 
+            size={24} 
+            color={isLiked ? "#5cc9cdd9" : "black"}
+          />
           <Text style={styles.actionText}>{info?.user_ratings.count_positive} likes</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleDislike} style={styles.actionButton}>
+          <AntDesign 
+            name={isDislike ? "dislike1" : "dislike2"} 
+            size={24} 
+            color={isDislike ? "#5cc9cdd9" : "black"} 
+          />
+          <Text style={styles.actionText}>{info?.user_ratings.count_negative} dislikes</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={handleComment} style={styles.actionButton}>
           <MaterialCommunityIcons name={!isInputVisible ? "comment-processing-outline":"comment-processing"} size={24} color="#000" />

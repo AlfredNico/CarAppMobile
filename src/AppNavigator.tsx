@@ -6,6 +6,9 @@ import { HomeScreen } from "screens/Home/HomeScreen";
 import { MessageScreen } from "screens/Message/MessageScreen";
 import { SettingScreen } from "screens/Settings/SettingScreen";
 import { Header } from "components/header/Header";
+import { HomeScreen2 } from "screens/Home/HomeScreen2";
+import FoodComponentSwitcher from "screens/Home/FoodComponentSwitcher";
+import SlideButton from "screens/Home/SlideButton";
 
 
 const Stack = createNativeStackNavigator();
@@ -18,6 +21,8 @@ export const AppNavigator: FC = () => {
             <Stack.Screen
                 name="Home"
                 component={HomeScreen}
+                // component={HomeScreen2}
+                // component={FoodComponentSwitcher}
                 options={({ navigation }) => ({
                     header: () => <Header navigation={navigation} />,
                 })}
