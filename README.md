@@ -15,22 +15,21 @@
 1. **Clone the Repository**
    
 _Clone the repository to your local machine_
-```
-    git clone git@github.com:AlfredNico/CarAppMobile.git
-    cd CarAppMobile
-```
+  ```bash
+  git clone git@github.com:AlfredNico/CarAppMobile.git
+  cd CarAppMobile
 
 2. **Install Dependencies**
 
 _Install dependencies using npm_
-```
+  ```bash
     npm i
 ```
 
 3. **Start the Development Server**
 
 _To run the project, use Expo_
-```
+  ```bash
     npm start
 ```
 
