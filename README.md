@@ -18,6 +18,7 @@ _Clone the repository to your local machine_
   ```bash
   git clone git@github.com:AlfredNico/CarAppMobile.git
   cd CarAppMobile
+```
 
 2. **Install Dependencies**
 
