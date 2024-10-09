@@ -34,4 +34,4 @@ _To run the project, use Expo_
     npm start
 ```
 
-1. **Running the App on Devices or Simulators**
+4. **Running the App on Devices or Simulators**
