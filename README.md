@@ -8,11 +8,12 @@
 - **Expo CLI**: Install Expo CLI globally using the following command:
   ```bash
   npm install -g expo-cli
-  
+
 ## Getting Started 🚀
 > Follow these instructions to set up the project on your local machine.
 
 1. **Clone the Repository**
+   
 _Clone the repository to your local machine_
 ```
     git clone git@github.com:AlfredNico/CarAppMobile.git
@@ -20,9 +21,11 @@ _Clone the repository to your local machine_
 ```
 
 1. **Install Dependencies**
+
 _Install dependencies using npm_
 
 1. **Start the Development Server**
+
 _To run the project, use Expo_
 ```
     npm start
