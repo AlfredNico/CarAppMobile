@@ -1,22 +1,31 @@
-# Car app mobile
+# Car app mobile 📱
 
-> This project is a React Native application built using Expo. It provides car love'r. The app is developed for both Android and iOS platforms, taking advantage of Expo's powerful development and building tools.
+> This project is a React Native application built using Expo. It provides daily activity lovers. The app is developed for both Android and iOS platforms, taking advantage of Expo's powerful development and building tools.
 
 
 ## Requirements
-
-## Getting Started
+- **Node.js**: Make sure you have the latest version of [Node.js](https://nodejs.org/) installed.
+- **Expo CLI**: Install Expo CLI globally using the following command:
+  ```bash
+  npm install -g expo-cli
+  
+## Getting Started 🚀
 > Follow these instructions to set up the project on your local machine.
 
 1. **Clone the Repository**
+_Clone the repository to your local machine_
+```
+    git clone git@github.com:AlfredNico/CarAppMobile.git
+    cd CarAppMobile
+```
 
+1. **Install Dependencies**
+_Install dependencies using npm_
 
-2. **Install Dependencies**
+1. **Start the Development Server**
+_To run the project, use Expo_
+```
+    npm start
+```
 
-
-3. **Start the Development Server**
-
-
-4. **Running the App on Devices or Simulators**
-
-
+1. **Running the App on Devices or Simulators**
