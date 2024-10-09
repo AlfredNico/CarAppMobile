@@ -93,13 +93,13 @@ const styles = StyleSheet.create({
   },
 
   videoContainer: {
-    // position: 'relative',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     height: 300, // Taille fixe pour éviter le débordement
     backgroundColor: '#f0f0f0',
+    marginBottom: 10,
   },
   video: {
     width: '100%',
@@ -108,17 +108,20 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     position: 'relative'
   },
-  playButton: {
-    position: 'absolute',
-    top: '40%',
-    left: '40%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    borderRadius: 50,
-    padding: 10,
+  keywordContainer: {
+    marginHorizontal: 10,
+    paddingVertical: 5,
+    flexDirection: 'row',
   },
-  playButtonText: {
-    color: 'white',
-    fontSize: 16,
+  keywordText: {
+    fontSize: 18,
+    color: '#333',
+    fontWeight: '500',
+  },
+  underlinedText: {
+    fontSize: 18,
+    color: '#333',
+    textDecorationLine: 'underline', // Add underline to text
   },
 });
 

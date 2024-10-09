@@ -1,14 +1,10 @@
 // apiService.ts
 export const apiService = {
-    fetchData: async (url: string) => {
+    fetchData: async (url: string, headers: any) => {
       try {
         const response = await fetch(url, {
           method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-rapidapi-key': '21f4233c8emsh95db32faaff5112p158945jsnf78236e26469',
-            'x-rapidapi-host':  'tasty.p.rapidapi.com'
-          },
+          headers
         });
   
         if (!response.ok) {

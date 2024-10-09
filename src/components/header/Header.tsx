@@ -38,7 +38,7 @@ export const Header: FC<HeaderProps> = ({ navigation}) => {
       <View style={styles.header}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Image source={require('assets/logo/car_logo.png')} style={styles.logo} />
-          <Text style={styles.title}>Car lover's</Text>
+          <Text style={styles.title}>e-Activity lover's</Text>
         </View>
         <View style={styles.iconContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>

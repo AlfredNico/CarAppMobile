@@ -1,7 +1,6 @@
-import { FC, useEffect, useRef, useState  } from 'react';
+import { FC, useRef, useState  } from 'react';
 import { View, Text, Image, TouchableOpacity, TextInput  } from 'react-native';
 import styles from './FoodCard.styles';
-// import Icon from "react-native-vector-icons/Icon";
 import {MaterialCommunityIcons, Ionicons, Fontisto, AntDesign } from "react-native-vector-icons";
 import { Video, ResizeMode, AVPlaybackStatus } from 'expo-av'; 
 
@@ -68,7 +67,6 @@ export const FoodCard: FC<any> = ({dataSource}) => {
   const handleComment = () => {
     // console.log('Commented...');
     setIsInputVisible((prev) => !prev);
-
   }
 
 
@@ -95,11 +93,16 @@ export const FoodCard: FC<any> = ({dataSource}) => {
           <Image source={{ uri: info?.thumbnail_url || 'https://via.placeholder.com/150' }} style={styles.avatar} />
           <View style={{ marginLeft: 10, flex: 1 }}>
             <Text style={styles.name}>{info?.name || '...'}</Text>
-            <Text>{info.created_at}</Text>
+            <Text>{ new Date(info.created_at * 1000).toLocaleString() }</Text>
           </View>
-          {/* <MaterialCommunityIcons name="dots-vertical" size={24} color="#000" /> */}
+          
           <Text style={{ color: '#5cc9cdd9', fontSize: 20, fontWeight: 'bold' }}>Price: ${ info.price.total } </Text>
         </View>
+
+        {info.keywords !== null && <View style={styles.keywordContainer}>
+          <Text style={styles.underlinedText}>keywords</Text>
+          <Text style={styles.keywordText}>: { info.keywords }</Text>
+        </View>}
 
         <Text style={styles.description}>{isExpanded ? info?.description : `${info?.description?.substring(0, maxChars)}...`}</Text>
        
@@ -109,10 +112,6 @@ export const FoodCard: FC<any> = ({dataSource}) => {
           </Text>
         </TouchableOpacity>
       </View>
-
-      {/* <Image source={{ uri: info?.urls?.small || 'https://via.placeholder.com/150' }} style={styles.image} /> */}
-
-      
 
       <View style={styles.videoContainer}>
         <Video

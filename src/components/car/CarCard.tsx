@@ -1,8 +1,8 @@
-import { FC, useEffect, useState  } from 'react';
+import { FC, useState  } from 'react';
 import { View, Text, Image, TouchableOpacity, TextInput  } from 'react-native';
 import styles from './CarCard.styles';
-// import Icon from "react-native-vector-icons/Icon";
 import {MaterialCommunityIcons, Ionicons, Fontisto } from "react-native-vector-icons";
+import { ImageViewer } from 'components/image-viewer/ImageViewer';
 
 
     
@@ -63,37 +63,7 @@ export const CarCard: FC<any> = ({dataSource}) => {
   };
 
 
-  // const endpoint = "https://api.unsplash.com/photos/random?client_id=tE7UOZI-TDa9p_z6KPlwNVO9y58FkbkO3NJ3ivX10qE&query=cars"
   const [info, setInfo] = useState<InfoType>(dataSource);
-  // const [isDataLoaded, setIsDataLoaded] = useState(false);
-
-  // useEffect(() => {
-  //   fetch(`${endpoint}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data) {
-  //         const { urls, user, id, description, likes, created_at } = data;
-  //         setInfo({
-  //           id,
-  //           description: description || '',
-  //           likes,
-  //           created_at,
-  //           urls: {
-  //             small: urls.small
-  //           },
-  //           user: {
-  //             profile_image: user.profile_image.medium,
-  //             name: user.name,
-  //             id: user.id,
-  //             username: user.username
-  //           }
-  //         })
-  //         setIsDataLoaded(true);
-  //       }
-  //     })
-  //     .catch((error) => console.error('Error fetching image:', error));
-  // }, []);
-
 
   // text max length
   const [isExpanded, setIsExpanded] = useState(false);
@@ -123,7 +93,9 @@ export const CarCard: FC<any> = ({dataSource}) => {
         </TouchableOpacity>
       </View>
 
-      <Image source={{ uri: info?.urls?.small || 'https://via.placeholder.com/150' }} style={styles.image} />
+      {/* <Image source={{ uri: info?.urls?.small || 'https://via.placeholder.com/150' }} style={styles.image} /> */}
+
+      <ImageViewer imageUrl={info?.urls?.small} />
       
       <View style={styles.actions}>
         <TouchableOpacity onPress={handleLike} style={styles.actionButton}>

@@ -8,7 +8,7 @@ export const notificationsData: INotification[] = [
       message: 'liked your post',
       time: '2 minutes ago',
       read: false,
-      avatar: 'https://placekitten.com/50/50',
+      avatar: 'https://via.placeholder.com/500',
     },
     {
       id: 2,
@@ -16,6 +16,7 @@ export const notificationsData: INotification[] = [
       message: 'commented on your photo',
       time: '10 minutes ago',
       read: false,
+      avatar: 'https://via.placeholder.com/500',
     },
     {
       id: 3,
@@ -23,5 +24,6 @@ export const notificationsData: INotification[] = [
       message: 'started following you',
       time: '1 hour ago',
       read: true,
+      avatar: 'https://via.placeholder.com/500',
     },
   ];
