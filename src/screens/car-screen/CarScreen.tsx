@@ -53,6 +53,7 @@ export const CarScreen: FC<any> = () => {
   const refreshContent = () => {
     setData([]);
     setShowRefresh(false);
+
     setIsLoading(false);
 
     if (scrollViewRef.current) {
@@ -82,7 +83,7 @@ export const CarScreen: FC<any> = () => {
         })
       );
       setIsLoading(true);
-      setShowRefresh(false);
+      // setShowRefresh(false);
     }
     fetchDataAsync();
     
@@ -118,6 +119,12 @@ export const CarScreen: FC<any> = () => {
           <Text style={styles.loadingText}>Loading data...</Text>
         </View>
         }
+
+        {/* Array.from({ length: 15 }, (_, index) => (
+          <View key={index}>
+            <Text>Loading data...</Text>
+          </View>
+        )) */}
         
       </ScrollView>
 
