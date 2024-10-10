@@ -5,6 +5,8 @@
 
 ## Requirements
 - **Node.js**: Make sure you have the latest version of [Node.js](https://nodejs.org/) installed.
+- **Git**:[Git](https://git-scm.com/)
+- **A code editor like** [Visual Studio Code](https://code.visualstudio.com/)
 - **Expo CLI**: Install Expo CLI globally using the following command:
   ```bash
   npm install -g expo-cli
