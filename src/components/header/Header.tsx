@@ -3,7 +3,6 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./Header.styles";
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useIsFocused } from '@react-navigation/native';
 
 interface HeaderProps {
   notificationsCount?: number;
@@ -13,7 +12,6 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = ({ navigation}) => {
   const currentRoute = navigation.getState().routes[navigation.getState().index].name;
   const [notificationsCount, setNotificationsCount] = useState<number>(2);
-
   // const handleNotificationClick = () => {
   //   navigation.navigate('Message');
   // }
@@ -22,6 +20,7 @@ export const Header: FC<HeaderProps> = ({ navigation}) => {
     if (currentRoute === 'Message') {
       setNotificationsCount(0);
     }
+    
     // const fetchNotifications = async () => {
     //   const newNotificationsCount = await getUnreadNotifications();
     //   setNotificationsCount(newNotificationsCount);
@@ -37,8 +36,11 @@ export const Header: FC<HeaderProps> = ({ navigation}) => {
     return (
       <View style={styles.header}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Image source={require('assets/logo/car_logo.png')} style={styles.logo} />
-          <Text style={styles.title}>e-Activity lover's</Text>
+          {/* <Image source={require('assets/logo/car_logo.png')} style={styles.logo} /> */}
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <Image source={require('assets/logo/car_logo.png')} style={styles.logo} />
+          </TouchableOpacity>
+          <Text style={styles.title} onPress={() => navigation.navigate('Home')}>e-Activity</Text>
         </View>
         <View style={styles.iconContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>

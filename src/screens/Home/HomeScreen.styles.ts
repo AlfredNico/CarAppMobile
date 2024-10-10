@@ -8,13 +8,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  container: {
-    flexGrow: 1, // Ensures content can grow with scrolling
-    paddingTop: 10, // Adds space below the header
-    paddingHorizontal: 20, // Horizontal padding for content
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
 
   buttonRow: {
     flexDirection: 'row',

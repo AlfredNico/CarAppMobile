@@ -15,19 +15,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  image: {
-    width: '100%',
-    height: 200,
-    borderRadius: 10,
-    marginBottom: 10,
-    backgroundColor: '#f2f2f200',
-  },
   
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
   description: {
     fontSize: 16,
     // textAlign: 'center',
@@ -80,7 +68,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   sendButton: {
-    // backgroundColor: '#007AFF', // Change the color as needed
     borderRadius: 50,
     padding: 10,
     alignItems: 'center',

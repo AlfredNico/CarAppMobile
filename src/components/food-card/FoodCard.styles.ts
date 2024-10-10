@@ -15,19 +15,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  image: {
-    width: '100%',
-    height: 200,
-    borderRadius: 10,
-    marginBottom: 10,
-    backgroundColor: '#f2f2f200',
-  },
-
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
+  
   description: {
     fontSize: 16,
     // textAlign: 'center',
@@ -80,7 +68,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   sendButton: {
-    // backgroundColor: '#007AFF', // Change the color as needed
     borderRadius: 50,
     padding: 10,
     alignItems: 'center',
@@ -97,7 +84,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    height: 300, // Taille fixe pour éviter le débordement
+    height: 300,
     backgroundColor: '#f0f0f0',
     marginBottom: 10,
   },
@@ -120,8 +107,9 @@ const styles = StyleSheet.create({
   },
   underlinedText: {
     fontSize: 18,
-    color: '#333',
-    textDecorationLine: 'underline', // Add underline to text
+    textDecorationLine: 'underline',
+    // color: '#333',
+    color: 'darkgray',
   },
 });
 

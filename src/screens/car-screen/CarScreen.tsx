@@ -51,18 +51,17 @@ export const CarScreen: FC<any> = () => {
   };
 
   const refreshContent = () => {
-    setData([]);
     setShowRefresh(false);
-
-    setIsLoading(false);
-
+    
     if (scrollViewRef.current) {
       scrollViewRef.current.scrollTo({ y: 0, animated: true });
-      
+      setIsLoading(false);
+      setData([]);
       const fetchDataAsync = async () => {
         Array.from({length: 5}, async(_, index) => {
           const newData = await fetchData();
           setData((prevData) => [...prevData, newData]);
+          setShowRefresh(false);
         });
       }
       fetchDataAsync();
@@ -83,7 +82,7 @@ export const CarScreen: FC<any> = () => {
         })
       );
       setIsLoading(true);
-      // setShowRefresh(false);
+      setShowRefresh(false);
     }
     fetchDataAsync();
     

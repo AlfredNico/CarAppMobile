@@ -6,7 +6,7 @@ import { styles } from './HomeScreen.styles';
 import { Ionicons } from "react-native-vector-icons";
 
 export const HomeScreen: FC<any> = () => {
-  const [activeComponent, setActiveComponent] = useState<'FoodScreen' | 'CarScreen'>('CarScreen');
+  const [activeComponent, setActiveComponent] = useState<'FoodScreen' | 'CarScreen'>('FoodScreen');
 
   return (
     <SafeAreaView style={styles.safeArea}>

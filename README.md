@@ -32,6 +32,8 @@ _Install dependencies using npm_
 _To run the project, use Expo_
   ```bash
     npm start
+    # or
+    npm run web
 ```
 
 4. **Running the App on Devices or Simulators**

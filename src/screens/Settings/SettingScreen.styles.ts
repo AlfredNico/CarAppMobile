@@ -6,4 +6,14 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
       },
+      content: {
+        flex: 1,
+        width: '100%',
+      },
+      footer: {
+        backgroundColor: '#ccc',
+        padding: 10,
+        alignItems: 'center',
+        width: '100%',
+      },
 });

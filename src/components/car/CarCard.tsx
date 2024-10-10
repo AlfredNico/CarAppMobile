@@ -42,7 +42,6 @@ export const CarCard: FC<any> = ({dataSource}) => {
 
   // like option
   const [isLiked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
   const handleLike = () => {
     // console.log('Liked');
     setLiked(!isLiked);

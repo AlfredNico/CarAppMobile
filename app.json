@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "CarApp",
-    "slug": "CarApp",
+    "name": "e-Activity",
+    "slug": "e-Activity",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,7 +19,7 @@
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.alfrednico.CarApp"
+      "package": "com.alfrednico.e-Activity"
     },
     "web": {
       "favicon": "./assets/favicon.png"

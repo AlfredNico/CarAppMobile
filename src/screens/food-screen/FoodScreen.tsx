@@ -28,10 +28,21 @@ export const FoodScreen: FC<any> = () => {
 
   const [data, setData] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [pauseVideo, setPauseVideo] = useState(false);
+
   const handleScroll = (event: any) => {
     const { contentOffset, layoutMeasurement, contentSize } = event.nativeEvent;
     const isAtBottom = layoutMeasurement.height + contentOffset.y >= contentSize.height - 20; // Buffer of 20 pixels
     setShowRefresh(isAtBottom);
+
+    // Scroll event to pause the video
+    const contentOffsetY = event.nativeEvent.contentOffset.y;
+    if (contentOffsetY > 50) {
+      setPauseVideo(true);
+    } else {
+      setPauseVideo(false);
+    }
   };
 
   const refreshContent = () => {
@@ -99,7 +110,7 @@ export const FoodScreen: FC<any> = () => {
       <ScrollView onScroll={handleScroll} scrollEventThrottle={16} ref={scrollViewRef}>
         { isLoading
           ? data.map((item, i:number) => 
-            <FoodCard dataSource={item} key={i} />
+            <FoodCard dataSource={item} pauseVideo={pauseVideo} key={i} />
           ) : <View style={styles.loadingContainer}>
           <ActivityIndicator size="small" color="#fff" />
           <Text style={styles.loadingText}>Loading data...</Text>

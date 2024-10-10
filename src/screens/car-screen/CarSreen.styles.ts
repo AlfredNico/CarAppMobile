@@ -12,19 +12,13 @@ export const styles = StyleSheet.create({
         top: 60,
         left: '50%',
         transform: [{ translateX: -50 }, { translateY: -50 }],
-        zIndex: 1, // Ensure button is on top
-      },
-
-
-      content: {
-        padding: 20,
-        fontSize: 18,
+        zIndex: 1,
       },
 
       buttonRefs: {
-        backgroundColor: '#5cc9cdd9', // Button color
+        backgroundColor: '#5cc9cdd9',
         padding: 10,
-        borderRadius: 10, // Border radius
+        borderRadius: 10,
         elevation: 5, // Shadow for Android
         shadowColor: '#000', // Shadow color for iOS
         shadowOffset: {

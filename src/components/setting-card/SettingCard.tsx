@@ -25,7 +25,7 @@ export const SettingCard: FC = () => {
           title="Privacy Settings"
           isCollapsed={activeIndex !== 1}
           toggleAccordion={() => toggleAccordion(1)}
-          iconName="notifications-outline"
+          iconName="lock-closed-outline"
         >
           <Text>Manage who can see your profile, etc.</Text>
         </SettingAccordion>

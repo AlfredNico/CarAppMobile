@@ -1,30 +1,17 @@
-import { FC, useRef, useState  } from 'react';
-import { View, Text, Image, TouchableOpacity, TextInput  } from 'react-native';
+import { FC, useEffect, useRef, useState  } from 'react';
+import { View, Text, Image, TouchableOpacity, TextInput, Dimensions  } from 'react-native';
 import styles from './FoodCard.styles';
 import {MaterialCommunityIcons, Ionicons, Fontisto, AntDesign } from "react-native-vector-icons";
 import { Video, ResizeMode, AVPlaybackStatus } from 'expo-av'; 
 
     
-interface Car {
-  id?: number;
-  nm: string;
-  imgUrl: string;
-  desc: string;
-  avatarUrl: string;
-  usrNm: string;
-}
-
-interface ICarPros {
-  car: Car;
-}
-
 type InfoType = {
   [key: string]: any;
 };
 
+// const { height: screenHeight } = Dimensions.get('window');
 
-
-export const FoodCard: FC<any> = ({dataSource}) => {
+export const FoodCard: FC<any> = ({dataSource, pauseVideo}) => {
   const [isInputVisible, setIsInputVisible] = useState(false);
   const [comment, setComment] = useState('');
 
@@ -85,6 +72,16 @@ export const FoodCard: FC<any> = ({dataSource}) => {
   };
 
   const videoRef = useRef<Video>(null);
+  useEffect(() => {
+    if (videoRef.current) {
+      if (pauseVideo) {
+        videoRef.current.pauseAsync(); // Pause the video
+      }
+      // else {
+      //   videoRef.current.playAsync();
+      // }
+    }
+  }, [pauseVideo]);
 
   return (
     <View style={styles.container}>
@@ -100,7 +97,7 @@ export const FoodCard: FC<any> = ({dataSource}) => {
         </View>
 
         {info.keywords !== null && <View style={styles.keywordContainer}>
-          <Text style={styles.underlinedText}>keywords</Text>
+          <Text style={styles.underlinedText}>Ingredients</Text>
           <Text style={styles.keywordText}>: { info.keywords }</Text>
         </View>}
 
