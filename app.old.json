@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "e-Activity",
-    "slug": "e-Activity",
+    "name": "CarApp",
+    "slug": "CarApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -12,8 +12,6 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "bundleIdentifier": "com.alfrednico.eActivity",
-      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
@@ -21,16 +19,14 @@
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.alfrednico.eActivity",
-      "versionCode": 1,
-      "permissions": []
+      "package": "com.alfrednico.CarApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "a3f75656-78a1-440c-baa1-4a749d3b731b"
+        "projectId": "22b0bdd8-9824-4e51-b244-9aa8ffb051f0"
       }
     }
   }
