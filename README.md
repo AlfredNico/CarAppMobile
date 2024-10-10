@@ -10,6 +10,10 @@
 - **Expo CLI**: Install Expo CLI globally using the following command:
   ```bash
   npm install -g expo-cli
+  ```
+  - **EAS CLI**: Install EAS CLI globally using the following command:
+  ```bash
+  npm install -g eas-cli
 
 ## Getting Started 🚀
 > Follow these instructions to set up the project on your local machine.
